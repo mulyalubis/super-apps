@@ -7,29 +7,32 @@ export function initDiagram() {
         users: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
         rocket: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>',
         wrench: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',
-        laptop: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/></svg>'
+        laptop: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/></svg>',
+        service: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>'
     };
 
     const nodes = [
-        { id: "SMA", label: "Bidang SMA", desc: "Pendidikan Menengah Atas", px: 0.12, py: 0.25, img: "assets/layanan-terbaik/sidakota.png", link: "ruang-super-apps/bidang-sma.html", color: "#3B82F6", icon: "graduation" },
-        { id: "GTK", label: "Bidang GTK", desc: "Guru & Tenaga Kependidikan", px: 0.12, py: 0.75, img: "assets/layanan-terbaik/asesmen-dinas-pendidikan-aceh.png", link: "ruang-super-apps/", color: "#10B981", icon: "users" },
-        { id: "CENTER", label: "Super Apps", desc: "Pusat Integrasi Digital", px: 0.50, py: 0.50, img: "assets/img-sliders/slider-start.jpeg", link: "ruang-super-apps/", color: "#BF2311", icon: "rocket", isCenter: true },
-        { id: "SMK", label: "Bidang SMK", desc: "Pendidikan Kejuruan", px: 0.88, py: 0.25, img: "assets/layanan-terbaik/rumah-kejuruan.png", link: "ruang-super-apps/", color: "#F59E0B", icon: "wrench" },
-        { id: "UPTD", label: "UPTD Tekkomdik", desc: "Teknologi & Komunikasi", px: 0.88, py: 0.75, img: "assets/layanan-terbaik/sijempol-aceh.png", link: "ruang-super-apps/", color: "#8B5CF6", icon: "laptop" }
+        { id: "SMA", label: "Bidang SMA", desc: "Pendidikan Menengah Atas", px: 0.10, py: 0.30, img: "assets/layanan-terbaik/sidakota.png", link: "ruang-super-apps/bidang-sma.html", color: "#3B82F6", icon: "graduation" },
+        { id: "GTK", label: "Bidang GTK", desc: "Guru & Tenaga Kependidikan", px: 0.10, py: 0.70, img: "assets/layanan-terbaik/asesmen-dinas-pendidikan-aceh.png", link: "ruang-super-apps/", color: "#10B981", icon: "users" },
+        { id: "CENTER", label: "Rumoh Pendidikan Provinsi Aceh", desc: "Pusat Integrasi Digital", px: 0.50, py: 0.50, img: "assets/img-sliders/slider-start.jpeg", link: "ruang-super-apps/", color: "#BF2311", icon: "rocket", isCenter: true },
+        { id: "SMK", label: "Bidang SMK", desc: "Pendidikan Kejuruan", px: 0.90, py: 0.30, img: "assets/layanan-terbaik/rumah-kejuruan.png", link: "ruang-super-apps/", color: "#F59E0B", icon: "wrench" },
+        { id: "UPTD", label: "UPTD Tekkomdik", desc: "Teknologi & Komunikasi", px: 0.90, py: 0.70, img: "assets/layanan-terbaik/sijempol-aceh.png", link: "ruang-super-apps/", color: "#8B5CF6", icon: "laptop" },
+        { id: "ELAYANAN", label: "E-Layanan", desc: "Sistem Informasi Layanan Dinas Pendidikan Aceh", px: 0.50, py: 0.95, img: "assets/layanan-terbaik/siguru.png", link: "ruang-super-apps/", color: "#EC4899", icon: "service" }
     ];
     
     const links = [
         { source: "SMA", target: "CENTER" },
         { source: "GTK", target: "CENTER" },
         { source: "SMK", target: "CENTER" },
-        { source: "UPTD", target: "CENTER" }
+        { source: "UPTD", target: "CENTER" },
+        { source: "ELAYANAN", target: "CENTER" }
     ];
 
     const container = document.getElementById("myDiagramDiv");
     if (!container) return;
     
     const width = container.offsetWidth || window.innerWidth * 0.9;
-    const height = 520;
+    const height = 600;
 
     nodes.forEach(n => {
         n.x = n.px * width;
@@ -159,11 +162,14 @@ export function initDiagram() {
         const isCenter = node.isCenter;
         const cardWidth = isCenter ? 220 : 180;
         const cardHeight = isCenter ? 180 : 140;
+        const containerWidth = cardWidth + 40;
+        const containerHeight = cardHeight + 40;
         const iconSvg = icons[node.icon] || '';
 
         let cardHtml;
         if (isCenter) {
-            cardHtml = '<a href="' + node.link + '" class="diagram-card center-card" style="--card-color: ' + node.color + '">' +
+            cardHtml = '<div class="card-wrapper" style="width: ' + cardWidth + 'px; height: ' + cardHeight + 'px;">' +
+                '<a href="' + node.link + '" class="diagram-card center-card" style="--card-color: ' + node.color + '">' +
                 '<div class="card-inner">' +
                     '<div class="center-glow"></div>' +
                     '<div class="card-icon-large">' + iconSvg + '</div>' +
@@ -172,9 +178,10 @@ export function initDiagram() {
                     '<div class="pulse-ring"></div>' +
                     '<div class="pulse-ring delay-1"></div>' +
                 '</div>' +
-            '</a>';
+            '</a></div>';
         } else {
-            cardHtml = '<a href="' + node.link + '" class="diagram-card side-card" style="--card-color: ' + node.color + '">' +
+            cardHtml = '<div class="card-wrapper" style="width: ' + cardWidth + 'px; height: ' + cardHeight + 'px;">' +
+                '<a href="' + node.link + '" class="diagram-card side-card" style="--card-color: ' + node.color + '">' +
                 '<div class="card-inner">' +
                     '<div class="card-header" style="background: linear-gradient(135deg, ' + node.color + '20, ' + node.color + '40)">' +
                         '<div class="card-icon">' + iconSvg + '</div>' +
@@ -188,15 +195,16 @@ export function initDiagram() {
                         '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>' +
                     '</div>' +
                 '</div>' +
-            '</a>';
+            '</a></div>';
         }
 
         nodesGroup.append("foreignObject")
-            .attr("x", node.x - cardWidth / 2)
-            .attr("y", node.y - cardHeight / 2)
-            .attr("width", cardWidth)
-            .attr("height", cardHeight)
-            .html(cardHtml);
+            .attr("x", node.x - containerWidth / 2)
+            .attr("y", node.y - containerHeight / 2)
+            .attr("width", containerWidth)
+            .attr("height", containerHeight)
+            .attr("style", "overflow: visible;")
+            .html('<div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: visible;">' + cardHtml + '</div>');
     });
 
     if (!document.getElementById('diagram-styles')) {
@@ -204,6 +212,10 @@ export function initDiagram() {
         style.id = 'diagram-styles';
         style.textContent = `
             .diagram-svg {
+                overflow: visible;
+            }
+
+            .nodes-group foreignObject {
                 overflow: visible;
             }
 
@@ -234,16 +246,25 @@ export function initDiagram() {
                 to { stroke-dashoffset: 0; }
             }
 
+            .card-wrapper {
+                overflow: visible;
+                position: relative;
+            }
+
             .diagram-card {
                 display: block;
                 width: 100%;
                 height: 100%;
                 text-decoration: none;
-                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
             }
 
             .diagram-card:hover {
-                transform: translateY(-8px) scale(1.02);
+                transform: translateY(-8px);
+            }
+            
+            .diagram-card:hover .card-inner {
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
             }
 
             .card-inner {
