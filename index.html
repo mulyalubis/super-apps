@@ -6,8 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="src/output.css" rel="stylesheet">
     <link rel="stylesheet" href="/node_modules/swiper/swiper-bundle.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <title class="">Super Apps</title>
     <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
         .swiper-scrollbar-drag {
             background: white !important;
             height: 100%;
@@ -17,11 +22,9 @@
             0% {
                 text-shadow: 0 0 5px #BF2311, 0 0 8px #BF2311;
             }
-
             50% {
                 text-shadow: 0 0 12px #BF2311, 0 0 18px #BF2311;
             }
-
             100% {
                 text-shadow: 0 0 5px #BF2311, 0 0 8px #BF2311;
             }
@@ -38,10 +41,334 @@
             display: none !important;
         }
 
-        /* Pastikan tombol berada di atas parallax background */
         .swiper-button-next,
         .swiper-button-prev {
             z-index: 50 !important;
+        }
+
+        /* Scroll Reveal Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(191, 35, 17, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(191, 35, 17, 0.6);
+            }
+        }
+
+        @keyframes gradient-shift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes typewriter {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .pulse-glow {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #BF2311 0%, #ff6b4a 50%, #BF2311 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 4s ease infinite;
+        }
+
+        /* Glass morphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .glass-dark {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Enhanced Button Styles */
+        .btn-primary {
+            background: linear-gradient(135deg, #BF2311 0%, #e63946 100%);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(191, 35, 17, 0.4);
+        }
+
+        /* Card hover effects */
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Image zoom effect */
+        .img-zoom {
+            overflow: hidden;
+        }
+
+        .img-zoom img {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .img-zoom:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Decorative elements */
+        .blob {
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.5;
+            position: absolute;
+            z-index: -1;
+        }
+
+        /* Hero text animation */
+        .hero-title {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .hero-subtitle {
+            animation: fadeInUp 1s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+
+        /* Stagger children */
+        .stagger-children > * {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+        .stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+        .stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+        .stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Enhanced scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #BF2311, #ff6b4a);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #e63946, #BF2311);
+        }
+
+        /* FAQ enhanced */
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateX(5px);
+        }
+
+        .faq-btn {
+            transition: all 0.3s ease;
+        }
+
+        .faq-btn:hover {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+        }
+
+        /* Nav link underline effect */
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #BF2311, #ff6b4a);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Section divider */
+        .section-divider {
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #BF2311, transparent);
+            opacity: 0.3;
+        }
+
+        /* Particle effect background */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
         }
     </style>
 </head>
@@ -51,95 +378,130 @@
     window.addEventListener('scroll', () => {
       scrolled = window.scrollY > 50
     })
-  " :class="scrolled ? 'bg-white/90 shadow-lg backdrop-blur-md' : 'bg-white/60 backdrop-blur-lg'"
-        class="fixed w-full z-50 transition-all duration-300 bg-white/30 backdrop-blur-lg">
-        <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+  " :class="scrolled ? 'bg-white/95 shadow-2xl py-2' : 'bg-white/60 py-4'"
+        class="fixed w-full z-50 transition-all duration-500 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
 
             <!-- Logo / Brand -->
-            <a href="#" class="text-xl font-bold text-gray-800">
+            <a href="#" class="text-2xl font-extrabold gradient-text tracking-tight">
                 SuperApps
             </a>
 
             <!-- Desktop Menu -->
-            <ul class="hidden md:flex items-center gap-6 text-gray-700">
-                <li><a href="#" class="hover:text-primary transition capitalize">beranda</a></li>
-                <li><a href="#" class="hover:text-primary transition capitalize">halaman</a></li>
-                <li><a href="#" class="hover:text-primary transition capitalize">list aplikasi</a></li>
-                <li><a href="#" class="hover:text-primary transition capitalize">hubungi kami</a></li>
+            <ul class="hidden md:flex items-center gap-8 text-gray-700 font-medium stagger-children">
+                <li><a href="#beranda" class="nav-link hover:text-primary transition-all duration-300 capitalize">beranda</a></li>
+                <li><a href="#ruangan" class="nav-link hover:text-primary transition-all duration-300 capitalize">halaman</a></li>
+                <li><a href="#layanan" class="nav-link hover:text-primary transition-all duration-300 capitalize">list aplikasi</a></li>
+                <li><a href="#faq" class="nav-link hover:text-primary transition-all duration-300 capitalize">hubungi kami</a></li>
             </ul>
 
-            <a href="" class="bg-amber-700 rounded-xl p-2 px-5 capitalize">
-                <p>dashboard analitik</p>
+            <a href="" class="hidden md:block btn-primary text-white rounded-full py-2.5 px-6 capitalize font-semibold shadow-lg">
+                <span class="relative z-10">Dashboard Analitik</span>
             </a>
 
             <!-- Mobile Toggle -->
-            <button @click="open = !open" class="md:hidden flex flex-col gap-1">
-                <span class="w-6 h-[3px] bg-gray-800"></span>
-                <span class="w-6 h-[3px] bg-gray-800"></span>
-                <span class="w-6 h-[3px] bg-gray-800"></span>
+            <button @click="open = !open" class="md:hidden flex flex-col gap-1.5 p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                <span class="w-6 h-[2px] bg-gray-800 transition-all" :class="open ? 'rotate-45 translate-y-2' : ''"></span>
+                <span class="w-6 h-[2px] bg-gray-800 transition-all" :class="open ? 'opacity-0' : ''"></span>
+                <span class="w-6 h-[2px] bg-gray-800 transition-all" :class="open ? '-rotate-45 -translate-y-2' : ''"></span>
             </button>
         </div>
 
         <!-- Mobile Menu -->
-        <div x-show="open" x-transition class="md:hidden bg-white/95 backdrop-blur-lg shadow-lg px-6 py-4 space-y-4">
-            <a href="#" class="block text-gray-700 hover:text-blue-600">Beranda</a>
-            <a href="#" class="block text-gray-700 hover:text-blue-600">Halaman</a>
-            <a href="#" class="block text-gray-700 hover:text-blue-600">List Aplikasi</a>
-            <a href="#" class="block text-gray-700 hover:text-blue-600">Hubungi Kami</a>
+        <div x-show="open" x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 -translate-y-4"
+            x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 -translate-y-4"
+            class="md:hidden bg-white/98 backdrop-blur-xl shadow-2xl px-6 py-6 space-y-4 border-t border-gray-100">
+            <a href="#beranda" class="block text-gray-700 hover:text-primary font-medium py-2 border-b border-gray-100 transition-colors">Beranda</a>
+            <a href="#ruangan" class="block text-gray-700 hover:text-primary font-medium py-2 border-b border-gray-100 transition-colors">Halaman</a>
+            <a href="#layanan" class="block text-gray-700 hover:text-primary font-medium py-2 border-b border-gray-100 transition-colors">List Aplikasi</a>
+            <a href="#faq" class="block text-gray-700 hover:text-primary font-medium py-2 transition-colors">Hubungi Kami</a>
+            <a href="" class="block btn-primary text-white text-center rounded-full py-3 px-6 capitalize font-semibold mt-4">
+                Dashboard Analitik
+            </a>
         </div>
     </nav>
     <main>
-        <section class="swiper mySwiper w-full h-screen">
+        <section id="beranda" class="swiper mySwiper w-full h-screen relative">
+            <!-- Decorative floating elements -->
+            <div class="absolute top-20 left-10 w-32 h-32 bg-primary/20 rounded-full blur-3xl float-animation z-10"></div>
+            <div class="absolute bottom-40 right-20 w-48 h-48 bg-orange-500/20 rounded-full blur-3xl float-animation z-10" style="animation-delay: 2s;"></div>
+            
             <div class="swiper-wrapper">
 
                 <div class="swiper-slide relative">
-                    <img src="assets/img-sliders/slider-start.jpeg" alt="" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black/50"></div>
-                    <section class="absolute inset-0 flex flex-col justify-center items-center text-white z-30">
-                        <h1 class="text-4xl w-[30vw] text-center pb-3">Portal Layanan Digital Aceh Provinsi</h1>
-                        <p class="text-lg w-[25vw] text-center">
-                            Satu aplikasi untuk mengakses berbagai layanan publik Aceh — dari pendidikan hingga
-                            administrasi.
+                    <img src="assets/img-sliders/slider-start.jpeg" alt="" class="w-full h-full object-cover scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
+                    <section class="absolute inset-0 flex flex-col justify-center items-center text-white z-30 px-4">
+                        <span class="text-sm md:text-base uppercase tracking-[0.3em] text-white/80 mb-4 hero-subtitle">Selamat Datang di</span>
+                        <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-center pb-4 hero-title max-w-4xl leading-tight">
+                            Portal Layanan Digital <span class="gradient-text">Aceh Provinsi</span>
+                        </h1>
+                        <p class="text-base md:text-xl max-w-2xl text-center text-white/90 hero-subtitle leading-relaxed">
+                            Satu aplikasi untuk mengakses berbagai layanan publik Aceh — dari pendidikan hingga administrasi.
                         </p>
+                        <a href="#layanan" class="mt-8 btn-primary text-white rounded-full py-3 px-8 font-semibold shadow-2xl hero-subtitle">
+                            <span class="relative z-10 flex items-center gap-2">
+                                Jelajahi Layanan
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                            </span>
+                        </a>
                     </section>
                 </div>
 
-                <div class="swiper-slide">
-                    <img src="assets/img-sliders/slider-1.jpeg" alt="" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black/50"></div>
-                    <section class="absolute inset-0 flex flex-col justify-center items-center text-white z-30">
-                        <h1 class="text-4xl w-[30vw] text-center pb-3">Pendidikan Aceh yang Terintegrasi</h1>
-                        <p class="text-lg w-[25vw] text-center">
+                <div class="swiper-slide relative">
+                    <img src="assets/img-sliders/slider-1.jpeg" alt="" class="w-full h-full object-cover scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
+                    <section class="absolute inset-0 flex flex-col justify-center items-center text-white z-30 px-4">
+                        <span class="text-sm md:text-base uppercase tracking-[0.3em] text-white/80 mb-4">Terintegrasi & Transparan</span>
+                        <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-center pb-4 max-w-4xl leading-tight">
+                            Pendidikan Aceh yang <span class="gradient-text">Terintegrasi</span>
+                        </h1>
+                        <p class="text-base md:text-xl max-w-2xl text-center text-white/90 leading-relaxed">
                             Data sekolah, PPDB, dan guru dalam satu platform — lebih mudah dan transparan
                         </p>
                     </section>
                 </div>
 
-                <div class="swiper-slide">
-                    <img src="assets/img-sliders/slider-2.jpeg" alt="" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black/50"></div>
-                    <section class="absolute inset-0 flex flex-col justify-center items-center text-white z-30">
-                        <h1 class="text-4xl w-[30vw] text-center pb-3">Aspirasi & Pengaduan Masyarakat</h1>
-                        <p class="text-lg w-[25vw] text-center">
-                            Menyampaikan saran, kritik, atau laporan publik jadi lebih cepat dan mudah lewat aplikasi
-                            resmi.
+                <div class="swiper-slide relative">
+                    <img src="assets/img-sliders/slider-2.jpeg" alt="" class="w-full h-full object-cover scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
+                    <section class="absolute inset-0 flex flex-col justify-center items-center text-white z-30 px-4">
+                        <span class="text-sm md:text-base uppercase tracking-[0.3em] text-white/80 mb-4">Suara Masyarakat</span>
+                        <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-center pb-4 max-w-4xl leading-tight">
+                            Aspirasi & Pengaduan <span class="gradient-text">Masyarakat</span>
+                        </h1>
+                        <p class="text-base md:text-xl max-w-2xl text-center text-white/90 leading-relaxed">
+                            Menyampaikan saran, kritik, atau laporan publik jadi lebih cepat dan mudah lewat aplikasi resmi.
                         </p>
                     </section>
                 </div>
 
-                <div class="swiper-slide ">
-                    <img src="assets/img-sliders/slider-3.jpeg" alt="" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black/50"></div>
-                    <section class="absolute inset-0 flex flex-col justify-center items-center text-white z-30">
-                        <h1 class="text-4xl w-[30vw] text-center pb-3">sit amet consectetur adipisicing elit</h1>
-                        <p class="text-lg w-[40vw] text-center">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam, doloribus ipsam! Nemo est
-                            obcaecati officiis fugiat molestias aut, cupiditate incidunt vitae quibusdam, dignissimos
-                            perspiciatis facilis facere recusandae reprehenderit blanditiis fugit?
+                <div class="swiper-slide relative">
+                    <img src="assets/img-sliders/slider-3.jpeg" alt="" class="w-full h-full object-cover scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
+                    <section class="absolute inset-0 flex flex-col justify-center items-center text-white z-30 px-4">
+                        <span class="text-sm md:text-base uppercase tracking-[0.3em] text-white/80 mb-4">Inovasi Digital</span>
+                        <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-center pb-4 max-w-4xl leading-tight">
+                            Transformasi Digital <span class="gradient-text">Aceh</span>
+                        </h1>
+                        <p class="text-base md:text-xl max-w-2xl text-center text-white/90 leading-relaxed">
+                            Mewujudkan pelayanan publik yang modern, efisien, dan mudah diakses oleh seluruh masyarakat Aceh.
                         </p>
                     </section>
                 </div>
 
+            </div>
+
+            <!-- Scroll indicator -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-2 text-white/70">
+                <span class="text-xs uppercase tracking-widest">Scroll</span>
+                <div class="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center pt-2">
+                    <div class="w-1.5 h-3 bg-white/70 rounded-full animate-bounce"></div>
+                </div>
             </div>
 
             <!-- Scrollbar -->
@@ -148,139 +510,162 @@
 
 
         <!-- aplikasi integrasi -->
-        <section class="w-full flex flex-col justify-center items-center pt-10 h-screen">
-            <h1 class="text-center text-2xl capitalize bg-primary p-3 rounded-lg text-white">
-                ruangan super apps
-            </h1>
-            <div id="myDiagramDiv" class="w-[90vw] h-[500px]"></div>
+        <section id="ruangan" class="w-full flex flex-col justify-center items-center pt-20 pb-10 min-h-screen relative overflow-hidden">
+            <!-- Background decorations -->
+            <div class="absolute top-0 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl"></div>
+            
+            <div class="reveal text-center mb-8">
+                <span class="text-sm uppercase tracking-[0.2em] text-primary font-semibold">Arsitektur Sistem</span>
+                <h1 class="text-3xl md:text-4xl font-extrabold mt-2 capitalize">
+                    Ruangan <span class="gradient-text">Super Apps</span>
+                </h1>
+            </div>
+            <div id="myDiagramDiv" class="w-[90vw] h-[500px] reveal-scale"></div>
         </section>
 
-        <section class="w-full h-[80vh] bg-primary py-16 flex justify-center">
-            <div class="relative w-[90vw] h-[350px]">
+        <section class="w-full min-h-[80vh] bg-gradient-to-br from-primary via-red-700 to-orange-600 py-20 flex justify-center relative overflow-hidden">
+            <!-- Decorative elements -->
+            <div class="absolute top-0 left-0 w-full h-full opacity-10">
+                <div class="absolute top-10 left-10 w-40 h-40 border border-white rounded-full"></div>
+                <div class="absolute bottom-20 right-20 w-60 h-60 border border-white rounded-full"></div>
+                <div class="absolute top-1/2 left-1/4 w-20 h-20 border border-white rounded-full"></div>
+            </div>
+            
+            <div class="relative w-[90vw] max-w-6xl">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                    <!-- Image cards with hover effects -->
+                    <div class="img-zoom rounded-2xl overflow-hidden shadow-2xl card-hover reveal" style="transition-delay: 0.1s;">
+                        <img src="assets/layanan-terbaik/asesmen-dinas-pendidikan-aceh.png"
+                            class="w-full h-40 md:h-52 object-cover" />
+                    </div>
 
-                <!-- Gambar kiri atas -->
-                <img src="assets/layanan-terbaik/asesmen-dinas-pendidikan-aceh.png"
-                    class="absolute top-0 left-0 w-[42vw] h-[27vh] object-cover rounded-md" />
+                    <div class="img-zoom rounded-2xl overflow-hidden shadow-2xl card-hover reveal" style="transition-delay: 0.2s;">
+                        <img src="assets/layanan-terbaik/siguru.png"
+                            class="w-full h-40 md:h-52 object-cover" />
+                    </div>
 
-                <!-- Gambar kanan atas -->
-                <img src="assets/layanan-terbaik/siguru.png"
-                    class="absolute top-0 right-0 w-[42vw] h-[27vh] object-cover rounded-md" />
+                    <div class="img-zoom rounded-2xl overflow-hidden shadow-2xl card-hover reveal" style="transition-delay: 0.3s;">
+                        <img src="assets/layanan-terbaik/sijempol-aceh.png"
+                            class="w-full h-40 md:h-52 object-cover" />
+                    </div>
 
-                <!-- Gambar kiri bawah -->
-                <img src="assets/layanan-terbaik/sijempol-aceh.png"
-                    class="absolute bottom-0 left-0 w-[42vw] h-[27vh] object-cover rounded-md" />
-
-                <!-- Gambar kanan bawah -->
-                <img src="assets/layanan-terbaik/rumah-kejuruan.png"
-                    class="absolute bottom-0 right-0 w-[42vw] h-[27vh] object-cover rounded-md" />
-
-                <!-- Box teks blur tengah -->
-                <div
-                    class="absolute inset-y-10 inset-x-80  flex flex-col justify-center items-center text-center bg-white/20 backdrop-blur-md px-10 py-6 rounded-lg">
-                    <h2 class="text-black text-2xl font-bold mb-4">
-                        Dapatkan Hosting Website <span class="shiny-text">Gratis</span> untuk Sekolah Anda!
-                    </h2>
-                    <p class="text-black text-lg leading-relaxed">
-                        SuperApps menyediakan hosting Gratis khusus untuk website sekolah di Aceh. Wujudkan website
-                        sekolah Anda dengan mudah dan tanpa biaya.
-                    </p>
-                    <a href="hosting.html" class="capitalize bg-white p-2 rounded-xl mt-5">daftar sekarang</a>
+                    <div class="img-zoom rounded-2xl overflow-hidden shadow-2xl card-hover reveal" style="transition-delay: 0.4s;">
+                        <img src="assets/layanan-terbaik/rumah-kejuruan.png"
+                            class="w-full h-40 md:h-52 object-cover" />
+                    </div>
                 </div>
 
+                <!-- Center CTA Card -->
+                <div class="mt-8 md:mt-12 flex justify-center reveal-scale">
+                    <div class="glass rounded-3xl px-8 md:px-16 py-10 text-center max-w-2xl shadow-2xl">
+                        <h2 class="text-white text-2xl md:text-3xl font-bold mb-4 leading-tight">
+                            Dapatkan Hosting Website <span class="text-yellow-300 shiny-text">Gratis</span> untuk Sekolah Anda!
+                        </h2>
+                        <p class="text-white/90 text-base md:text-lg leading-relaxed mb-6">
+                            SuperApps menyediakan hosting Gratis khusus untuk website sekolah di Aceh. Wujudkan website sekolah Anda dengan mudah dan tanpa biaya.
+                        </p>
+                        <a href="hosting.html" class="inline-block bg-white text-primary font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 capitalize">
+                            Daftar Sekarang
+                            <span class="inline-block ml-2">→</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="layanan w-full h-full relative flex flex-col justify-center items-center my-10 mb-20">
-            <section class="title-layanan flex justify-center items-start max-sm:pb-5 pb-10">
-                <p class="text-2xl capitalize max-sm:text-3xl bg-primary p-3 rounded-lg text-white">
-                    layanan terbaik super apps
-                </p>
+        <section id="layanan" class="layanan w-full h-full relative flex flex-col justify-center items-center py-20 overflow-hidden">
+            <!-- Background decorations -->
+            <div class="absolute top-20 right-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 left-0 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl"></div>
+            
+            <section class="title-layanan flex flex-col justify-center items-center max-sm:pb-5 pb-12 reveal">
+                <span class="text-sm uppercase tracking-[0.2em] text-primary font-semibold mb-2">Layanan Kami</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold capitalize text-center">
+                    Layanan Terbaik <span class="gradient-text">Super Apps</span>
+                </h2>
             </section>
 
-            <section class="slider-wrapper relative w-full overflow-hidden">
+            <section class="slider-wrapper relative w-full overflow-hidden reveal-scale">
                 <section id="sliderContainer" class="flex transition-all duration-500 ease-in-out">
 
                     <a href="https://guru.pusakagtkaceh.id"
-                        class="img-link shrink-0 mx-3 w-[40vw] max-sm:w-[85vw] h-max border-2 border-black p-3 backdrop-blur-sm bg-whie/20">
-                        <section class="w-full h-[40vh] max-sm:h-[30vh] overflow-hidden">
-                            <img src="assets/layanan-terbaik/siguru.png" alt="">
+                        class="img-link shrink-0 mx-4 w-[40vw] max-sm:w-[85vw] h-max rounded-2xl overflow-hidden shadow-xl card-hover bg-white border border-gray-100">
+                        <section class="w-full h-[40vh] max-sm:h-[30vh] overflow-hidden img-zoom">
+                            <img src="assets/layanan-terbaik/siguru.png" alt="" class="w-full h-full object-cover">
                         </section>
-                        <section class="flex justify-center w-full">
-                            <section class="icon w-[30vw] h-[30vh] max-sm:w-screen mr-2 max-sm:mr-3">
-                                <img src="" alt=""
-                                    class="w-[20vw] h-[20vh] object-cover  max-sm:w-[18vw] max-sm:h-[13vh]">
-                            </section>
-                            <section class="startflex flex-col justify-items items-center">
-                                <h2 class="capitalize font-bold py-2 max-sm:text-xl text-2xl">Guru Unggul</h2>
-                                <p class="text-justify w-[90%] max-sm:text-sm">platform resmi bernama SiGuru yang
-                                    dirancang untuk meningkatkan kualitas guru di Aceh melalui pendekatan digital dan
-                                    data yang terintegrasi. Melalui layanan ini, guru dapat mengembangkan kompetensi,
-                                    mengikuti pelatihan, serta mendapatkan evaluasi kinerja yang komprehensif.</p>
-                            </section>
+                        <section class="p-6">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-orange-500 flex items-center justify-center text-white font-bold text-lg">
+                                    GU
+                                </div>
+                                <h2 class="capitalize font-bold text-xl md:text-2xl text-gray-800">Guru Unggul</h2>
+                            </div>
+                            <p class="text-gray-600 text-sm md:text-base leading-relaxed">Platform resmi bernama SiGuru yang dirancang untuk meningkatkan kualitas guru di Aceh melalui pendekatan digital dan data yang terintegrasi.</p>
+                            <div class="mt-4 flex items-center text-primary font-semibold text-sm">
+                                Kunjungi Layanan
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ml-2"><path d="m9 18 6-6-6-6"/></svg>
+                            </div>
                         </section>
                     </a>
 
                     <a href="https://akks.pusakagtkaceh.id"
-                        class="img-link shrink-0 mx-3 w-[40vw] max-sm:w-[85vw] h-max border-2 border-black p-3 backdrop-blur-sm bg-white/20">
-                        <section class="w-full h-[40vh] max-sm:h-[30vh] overflow-hidden">
-                            <img src="assets/layanan-terbaik/asesmen-dinas-pendidikan-aceh.png" alt="">
+                        class="img-link shrink-0 mx-4 w-[40vw] max-sm:w-[85vw] h-max rounded-2xl overflow-hidden shadow-xl card-hover bg-white border border-gray-100">
+                        <section class="w-full h-[40vh] max-sm:h-[30vh] overflow-hidden img-zoom">
+                            <img src="assets/layanan-terbaik/asesmen-dinas-pendidikan-aceh.png" alt="" class="w-full h-full object-cover">
                         </section>
-                        <section class="flex justify-center w-full">
-                            <section class="icon w-[30vw] h-[30vh] max-sm:w-screen mr-2 max-sm:mr-3">
-                                <img src="" alt=""
-                                    class="w-[20vw] h-[20vh] object-cover  max-sm:w-[18vw] max-sm:h-[13vh]">
-                            </section>
-                            <section class="infom flex flex-col justify-items items-start">
-                                <h2 class="capitalize font-bold py-2 max-sm:text-xl text-2xl">
-                                    AKKS
-                                </h2>
-                                <p class="text-justify w-[90%] max-sm:text-sm">
-                                    platform manajemen kesertaan fungsional guru (AKKS) di Provinsi Aceh. Portal ini
-                                    menyediakan sistem pengajuan, pemantauan, dan validasi data administratif bagi guru
-                                    yang mengurus kenaikan fungsional, sertifikasi, atau kenaikan pangkat, sekaligus
-                                    memberikan transparansi dan efisiensi dalam proses birokrasi pendidikan Aceh.</p>
-                            </section>
+                        <section class="p-6">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-white font-bold text-lg">
+                                    AK
+                                </div>
+                                <h2 class="capitalize font-bold text-xl md:text-2xl text-gray-800">AKKS</h2>
+                            </div>
+                            <p class="text-gray-600 text-sm md:text-base leading-relaxed">Platform manajemen kesertaan fungsional guru (AKKS) di Provinsi Aceh untuk pengajuan, pemantauan, dan validasi data administratif.</p>
+                            <div class="mt-4 flex items-center text-primary font-semibold text-sm">
+                                Kunjungi Layanan
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ml-2"><path d="m9 18 6-6-6-6"/></svg>
+                            </div>
                         </section>
                     </a>
 
                     <a href="https://rka.digitalkode.id"
-                        class="img-link shrink-0 mx-3 w-[40vw] max-sm:w-[85vw] h-max border-2 border-black p-3 backdrop-blur-sm bg-white/20">
-                        <section class="w-full h-[40vh] max-sm:h-[30vh] overflow-hidden">
-                            <img src="assets/layanan-terbaik/rumah-kejuruan.png" alt="">
+                        class="img-link shrink-0 mx-4 w-[40vw] max-sm:w-[85vw] h-max rounded-2xl overflow-hidden shadow-xl card-hover bg-white border border-gray-100">
+                        <section class="w-full h-[40vh] max-sm:h-[30vh] overflow-hidden img-zoom">
+                            <img src="assets/layanan-terbaik/rumah-kejuruan.png" alt="" class="w-full h-full object-cover">
                         </section>
-                        <section class="flex justify-center w-full">
-                            <section class="icon w-[30vw] h-[30vh] max-sm:w-screen mr-2 max-sm:mr-3">
-                                <img src="" alt=""
-                                    class="w-[20vw] h-[20vh] object-cover  max-sm:w-[18vw] max-sm:h-[13vh]">
-                            </section>
-                            <section class="infom flex flex-col justify-items items-start">
-                                <h2 class="capitalize font-bold py-2 max-sm:text-xl text-2xl">Rumah Kejuruan</h2>
-                                <p class="text-justify w-[90%] max-sm:text-sm">platform berbasis web yang disiapkan
-                                    untuk mendukung pengelolaan Rencana Kerja dan Anggaran (RKA) secara digital. Melalui
-                                    sistem ini, proses perencanaan, penyusunan, peninjauan, serta pengendalian dokumen
-                                    anggaran dapat dilakukan secara lebih terstruktur, transparan, dan terdokumentasi
-                                    dengan baik.</p>
-                            </section>
+                        <section class="p-6">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-600 to-emerald-500 flex items-center justify-center text-white font-bold text-lg">
+                                    RK
+                                </div>
+                                <h2 class="capitalize font-bold text-xl md:text-2xl text-gray-800">Rumah Kejuruan</h2>
+                            </div>
+                            <p class="text-gray-600 text-sm md:text-base leading-relaxed">Platform berbasis web untuk mendukung pengelolaan Rencana Kerja dan Anggaran (RKA) secara digital dan terstruktur.</p>
+                            <div class="mt-4 flex items-center text-primary font-semibold text-sm">
+                                Kunjungi Layanan
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ml-2"><path d="m9 18 6-6-6-6"/></svg>
+                            </div>
                         </section>
                     </a>
 
-                    <a
-                        class="img-link shrink-0 mx-3 w-[40vw] max-sm:w-[85vw] h-max border-2 border-black p-3 backdrop-blur-sm bg-white/20">
-                        <section class="w-full h-[40vh] max-sm:h-[30vh] overflow-hidden">
-                            <img src="assets/layanan-terbaik/sijempol-aceh.png" alt="">
+                    <a href="#"
+                        class="img-link shrink-0 mx-4 w-[40vw] max-sm:w-[85vw] h-max rounded-2xl overflow-hidden shadow-xl card-hover bg-white border border-gray-100">
+                        <section class="w-full h-[40vh] max-sm:h-[30vh] overflow-hidden img-zoom">
+                            <img src="assets/layanan-terbaik/sijempol-aceh.png" alt="" class="w-full h-full object-cover">
                         </section>
-                        <section class="flex justify-center w-full">
-                            <section class="icon w-[30vw] h-[30vh] max-sm:w-screen mr-2 max-sm:mr-3">
-                                <img src="" alt=""
-                                    class="w-[20vw] h-[20vh] object-cover  max-sm:w-[18vw] max-sm:h-[13vh]">
-                            </section>
-                            <section class="infom flex flex-col justify-items items-start">
-                                <h2 class="capitalize font-bold py-2 max-sm:text-xl text-2xl">Sijempol Aceh</h2>
-                                <p class="text-justify w-[90%] max-sm:text-sm">SiJEMPOL Aceh (Sistem Jejaring Media
-                                    Pembelajaran Online) yang dikembangkan oleh Dinas Pendidikan Aceh. Di sini, guru dan
-                                    siswa Aceh dapat mengakses bahan ajar digital, kelas maya, video pembelajaran, dan
-                                    fasilitas komunikasi untuk pembelajaran fleksibel, kapan saja dan di mana saja.</p>
-                            </section>
+                        <section class="p-6">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600 to-pink-500 flex items-center justify-center text-white font-bold text-lg">
+                                    SJ
+                                </div>
+                                <h2 class="capitalize font-bold text-xl md:text-2xl text-gray-800">Sijempol Aceh</h2>
+                            </div>
+                            <p class="text-gray-600 text-sm md:text-base leading-relaxed">SiJEMPOL Aceh (Sistem Jejaring Media Pembelajaran Online) untuk akses bahan ajar digital dan kelas maya.</p>
+                            <div class="mt-4 flex items-center text-primary font-semibold text-sm">
+                                Kunjungi Layanan
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ml-2"><path d="m9 18 6-6-6-6"/></svg>
+                            </div>
                         </section>
                     </a>
                 </section>
@@ -308,9 +693,12 @@
         </section>
 
         <!-- fitur unggulan -->
-        <section class="fitur-unggulan h-screen w-full">
-            <section class="flex justify-center items-center pb-10">
-                <h1 class="capitalize bg-primary p-3 rounded-lg text-white">fitur unggulan super apps</h1>
+        <section class="fitur-unggulan min-h-screen w-full py-20">
+            <section class="flex flex-col justify-center items-center pb-12 reveal">
+                <span class="text-sm uppercase tracking-[0.2em] text-primary font-semibold mb-2">Keunggulan Kami</span>
+                <h1 class="text-3xl md:text-4xl font-extrabold capitalize text-center">
+                    Fitur Unggulan <span class="gradient-text">Super Apps</span>
+                </h1>
             </section>
 
             <section style="--swiper-navigation-color:#fff; --swiper-pagination-color:#fff"
@@ -401,28 +789,33 @@
             </section>
         </section>
 
-        <section class="w-full flex flex-col items-center py-16">
+        <section id="faq" class="w-full flex flex-col items-center py-20 relative overflow-hidden">
+            <!-- Background decorations -->
+            <div class="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-80 h-80 bg-orange-500/5 rounded-full blur-3xl"></div>
+            
             <!-- Judul -->
-            <h1 class="text-center text-2xl md:text-3xl font-semibold mb-10 leading-relaxed">
-                Pertanyaan Seputar Integrasi &<br />
-                Interoperabilitas<br />
-                <span class="font-bold">Kami Siap Menjawab!</span>
-            </h1>
+            <div class="reveal text-center mb-12 px-4">
+                <span class="text-sm uppercase tracking-[0.2em] text-primary font-semibold mb-2 block">FAQ</span>
+                <h1 class="text-3xl md:text-4xl font-extrabold leading-relaxed">
+                    Pertanyaan Seputar <span class="gradient-text">Integrasi</span><br class="hidden md:block" />
+                    <span class="text-gray-800">Kami Siap Menjawab!</span>
+                </h1>
+            </div>
 
-            <div class="w-full max-w-[60vw] space-y-4">
+            <div class="w-full max-w-3xl px-6 space-y-4">
 
                 <!-- FAQ Item -->
-                <div class="faq-item">
-                    <button class="faq-btn w-full bg-gray-200 rounded-xl px-4 py-3 flex justify-between items-center">
-                        <span class="text-gray-700 font-medium">
+                <div class="faq-item reveal" style="transition-delay: 0.1s;">
+                    <button class="faq-btn w-full bg-white shadow-md hover:shadow-lg rounded-2xl px-6 py-5 flex justify-between items-center border border-gray-100">
+                        <span class="text-gray-800 font-semibold text-left">
                             Apa itu integrasi dan interoperabilitas aplikasi di Dinas Pendidikan?
                         </span>
-                        <span class="icon text-2xl font-bold">+</span>
+                        <span class="icon text-2xl font-bold text-primary ml-4 transition-transform duration-300">+</span>
                     </button>
 
-                    <div
-                        class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-100 rounded-lg">
-                        <div class="p-4 text-gray-700">
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <div class="p-6 text-gray-600 bg-gray-50 rounded-2xl mt-2 leading-relaxed">
                             Integrasi aplikasi di lingkungan Dinas Pendidikan Aceh berarti setiap aplikasi yang
                             digunakan dapat saling terhubung dan bertukar data secara otomatis. Interoperabilitas
                             memastikan berbagai aplikasi, meskipun berbeda platform atau teknologi, tetap dapat
@@ -432,17 +825,16 @@
                 </div>
 
                 <!-- FAQ Item -->
-                <div class="faq-item">
-                    <button class="faq-btn w-full bg-gray-200 rounded-xl px-4 py-3 flex justify-between items-center">
-                        <span class="text-gray-700 font-medium">
+                <div class="faq-item reveal" style="transition-delay: 0.2s;">
+                    <button class="faq-btn w-full bg-white shadow-md hover:shadow-lg rounded-2xl px-6 py-5 flex justify-between items-center border border-gray-100">
+                        <span class="text-gray-800 font-semibold text-left">
                             Bagaimana data antar aplikasi dapat terintegrasi?
                         </span>
-                        <span class="icon text-2xl font-bold">+</span>
+                        <span class="icon text-2xl font-bold text-primary ml-4 transition-transform duration-300">+</span>
                     </button>
 
-                    <div
-                        class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-100 rounded-lg">
-                        <div class="p-4 text-gray-700">
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <div class="p-6 text-gray-600 bg-gray-50 rounded-2xl mt-2 leading-relaxed">
                             Semua data dari aplikasi yang berbeda dikumpulkan dan disimpan terpusat di Data Warehouse.
                             Dengan proses integrasi ini, setiap aplikasi akan saling bertukar data secara otomatis
                             sehingga tidak terjadi duplikasi dan data menjadi lebih akurat.
@@ -451,17 +843,16 @@
                 </div>
 
                 <!-- FAQ Item -->
-                <div class="faq-item">
-                    <button class="faq-btn w-full bg-gray-200 rounded-xl px-4 py-3 flex justify-between items-center">
-                        <span class="text-gray-700 font-medium">
+                <div class="faq-item reveal" style="transition-delay: 0.3s;">
+                    <button class="faq-btn w-full bg-white shadow-md hover:shadow-lg rounded-2xl px-6 py-5 flex justify-between items-center border border-gray-100">
+                        <span class="text-gray-800 font-semibold text-left">
                             Apa manfaat utama integrasi aplikasi dengan Data Warehouse & API Gateway?
                         </span>
-                        <span class="icon text-2xl font-bold">+</span>
+                        <span class="icon text-2xl font-bold text-primary ml-4 transition-transform duration-300">+</span>
                     </button>
 
-                    <div
-                        class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-100 rounded-lg">
-                        <div class="p-4 text-gray-700">
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <div class="p-6 text-gray-600 bg-gray-50 rounded-2xl mt-2 leading-relaxed">
                             Integrasi dengan Data Warehouse dan API Gateway meningkatkan efisiensi, akurasi, serta
                             ketersediaan data yang real-time untuk pengambilan keputusan. Selain itu, mempermudah
                             pengembangan aplikasi baru dengan memanfaatkan API yang sudah tersedia secara publik.
@@ -474,61 +865,93 @@
 
     </main>
 
-    <footer class="w-full bg-primary text-white py-12 px-6">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+    <footer class="w-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-16 px-6 relative overflow-hidden">
+        <!-- Decorative elements -->
+        <div class="absolute top-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-80 h-80 bg-orange-500/10 rounded-full blur-3xl"></div>
+        
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
 
             <!-- Logo & Deskripsi -->
-            <div>
-                <h2 class="text-xl font-semibold mb-4">Super Apps Aceh</h2>
-                <p class="text-gray-300 text-sm leading-relaxed">
+            <div class="md:col-span-1">
+                <h2 class="text-2xl font-extrabold mb-4 gradient-text">Super Apps Aceh</h2>
+                <p class="text-gray-400 text-sm leading-relaxed">
                     Platform layanan digital terpadu yang mendukung berbagai kebutuhan masyarakat Aceh secara cepat,
                     aman dan terintegrasi.
                 </p>
+                <div class="flex items-center gap-3 mt-6">
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300 hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300 hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300 hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300 hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                    </a>
+                </div>
             </div>
 
             <!-- Menu Navigasi -->
             <div>
-                <h3 class="text-lg font-semibold mb-3">Navigasi</h3>
-                <ul class="space-y-2 text-gray-300 text-sm">
-                    <li><a href="#" class="hover:text-white transition">Beranda</a></li>
-                    <li><a href="#" class="hover:text-white transition">Layanan</a></li>
-                    <li><a href="#" class="hover:text-white transition">Tentang</a></li>
-                    <li><a href="#" class="hover:text-white transition">Kontak</a></li>
+                <h3 class="text-lg font-bold mb-5 text-white">Navigasi</h3>
+                <ul class="space-y-3">
+                    <li><a href="#beranda" class="text-gray-400 hover:text-white transition-colors duration-300 flex items-center gap-2 group"><span class="w-0 group-hover:w-2 h-0.5 bg-primary transition-all duration-300"></span>Beranda</a></li>
+                    <li><a href="#ruangan" class="text-gray-400 hover:text-white transition-colors duration-300 flex items-center gap-2 group"><span class="w-0 group-hover:w-2 h-0.5 bg-primary transition-all duration-300"></span>Halaman</a></li>
+                    <li><a href="#layanan" class="text-gray-400 hover:text-white transition-colors duration-300 flex items-center gap-2 group"><span class="w-0 group-hover:w-2 h-0.5 bg-primary transition-all duration-300"></span>Layanan</a></li>
+                    <li><a href="#faq" class="text-gray-400 hover:text-white transition-colors duration-300 flex items-center gap-2 group"><span class="w-0 group-hover:w-2 h-0.5 bg-primary transition-all duration-300"></span>FAQ</a></li>
                 </ul>
             </div>
 
             <!-- Informasi Kontak -->
             <div>
-                <h3 class="text-lg font-semibold mb-3">Kontak</h3>
-                <ul class="space-y-2 text-gray-300 text-sm">
-                    <li>Dinas Komunikasi, Informatika dan Persandian</li>
-                    <li>Provinsi Aceh</li>
-                    <li>Email: <a href="#" class="hover:text-white">info@acehprov.go.id</a></li>
-                    <li>Telp: (0651) 123456</li>
+                <h3 class="text-lg font-bold mb-5 text-white">Kontak</h3>
+                <ul class="space-y-3 text-gray-400 text-sm">
+                    <li class="flex items-start gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary mt-0.5 shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>Dinas Komunikasi, Informatika dan Persandian Provinsi Aceh</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        <a href="mailto:info@acehprov.go.id" class="hover:text-white transition-colors">info@acehprov.go.id</a>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <span>(0651) 123456</span>
+                    </li>
                 </ul>
             </div>
 
-            <!-- Sosial Media -->
+            <!-- Newsletter -->
             <div>
-                <h3 class="text-lg font-semibold mb-3">Ikuti Kami</h3>
-                <div class="flex items-center gap-4 text-white">
-                    <a href="#" class="hover:text-gray-300 text-2xl">🌐</a>
-                    <a href="#" class="hover:text-gray-300 text-2xl">📘</a>
-                    <a href="#" class="hover:text-gray-300 text-2xl">🏆</a>
-                    <a href="#" class="hover:text-gray-300 text-2xl">📸</a>
+                <h3 class="text-lg font-bold mb-5 text-white">Newsletter</h3>
+                <p class="text-gray-400 text-sm mb-4">Dapatkan info terbaru dari Super Apps Aceh</p>
+                <div class="flex gap-2">
+                    <input type="email" placeholder="Email Anda" class="flex-1 bg-white/10 border border-white/20 rounded-full px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-colors">
+                    <button class="btn-primary rounded-full px-5 py-2.5 text-sm font-semibold">
+                        <span class="relative z-10">Kirim</span>
+                    </button>
                 </div>
             </div>
 
         </div>
 
         <!-- Garis Pembatas -->
-        <div class="max-w-7xl mx-auto border-t border-gray-700 mt-10 pt-6 text-center">
-            <p class="text-gray-400 text-sm">
+        <div class="max-w-7xl mx-auto border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 relative z-10">
+            <p class="text-gray-500 text-sm">
                 © 2025 Pemerintah Aceh. Semua hak dilindungi.
             </p>
+            <div class="flex gap-6 text-sm text-gray-500">
+                <a href="#" class="hover:text-white transition-colors">Kebijakan Privasi</a>
+                <a href="#" class="hover:text-white transition-colors">Syarat & Ketentuan</a>
+            </div>
         </div>
     </footer>
 
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="main.js"></script>
@@ -570,13 +993,16 @@
 
     <script type="module">
         const swiper = new Swiper(".mySwiper", {
-
             autoplay: {
-                delay: 1500, // 1,5 detik
-                disableOnInteraction: false, // tetap jalan meski user interaksi
+                delay: 4000,
+                disableOnInteraction: false,
             },
-            loop: true, // biar bisa loop terus
-            speed: 1000, // kecepatan transisi
+            loop: true,
+            speed: 1200,
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
             scrollbar: {
                 el: ".swiper-scrollbar",
                 hide: true,
@@ -586,7 +1012,7 @@
         });
 
         var swipers = new Swiper(".mySwipers", {
-            speed: 600,
+            speed: 800,
             parallax: true,
             pagination: {
                 el: ".swiper-pagination",
@@ -597,6 +1023,26 @@
                 prevEl: ".swiper-button-prev",
             },
         });
+    </script>
+
+    <!-- Scroll Reveal Animation Script -->
+    <script>
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+            
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', reveal);
+        window.addEventListener('load', reveal);
     </script>
 
 </body>

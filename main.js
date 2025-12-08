@@ -141,12 +141,16 @@ const hamburgerMenu = document.querySelector('.hamburger-menu')
 const sidebar = document.querySelector('.sidebar')
 const closed = document.querySelector('.sidebar-close')
 
-hamburgerMenu.addEventListener('click', () => {
-    sidebar.classList.add('active')
-    closed.classList.add('active')
-});
+if (hamburgerMenu) {
+    hamburgerMenu.addEventListener('click', () => {
+        if (sidebar) sidebar.classList.add('active')
+        if (closed) closed.classList.add('active')
+    });
+}
 
-closed.addEventListener('click', () => {
-    sidebar.classList.remove('active')
-    closed.classList.remove('active')
-});
+if (closed) {
+    closed.addEventListener('click', () => {
+        if (sidebar) sidebar.classList.remove('active')
+        closed.classList.remove('active')
+    });
+}
