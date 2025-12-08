@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="src/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="/node_modules/swiper/swiper-bundle.min.css">
+    <title class="">Super Apps</title>
+    <style>
+        .swiper-scrollbar-drag {
+            background: white !important;
+            height: 100%;
+        }
+
+        @keyframes shine {
+            0% {
+                text-shadow: 0 0 5px #BF2311, 0 0 8px #BF2311;
+            }
+
+            50% {
+                text-shadow: 0 0 12px #BF2311, 0 0 18px #BF2311;
+            }
+
+            100% {
+                text-shadow: 0 0 5px #BF2311, 0 0 8px #BF2311;
+            }
+        }
+
+        .shiny-text {
+            color: #BF2311;
+            animation: shine 2s infinite ease-in-out;
+            font-weight: bold;
+        }
+
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            display: none !important;
+        }
+
+        /* Pastikan tombol berada di atas parallax background */
+        .swiper-button-next,
+        .swiper-button-prev {
+            z-index: 50 !important;
+        }
+    </style>
+</head>
+
+<body class="overflow-x-hidden w-full">
+    <nav x-data="{ open: false, scrolled: false }" x-init="
+    window.addEventListener('scroll', () => {
+      scrolled = window.scrollY > 50
+    })
+  " :class="scrolled ? 'bg-white/90 shadow-lg backdrop-blur-md' : 'bg-white/60 backdrop-blur-lg'"
+        class="fixed w-full z-50 transition-all duration-300 bg-white/30 backdrop-blur-lg">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+
+            <!-- Logo / Brand -->
+            <a href="#" class="text-xl font-bold text-gray-800">
+                SuperApps
+            </a>
+
+            <!-- Desktop Menu -->
+            <ul class="hidden md:flex items-center gap-6 text-gray-700">
+                <li><a href="#" class="hover:text-primary transition capitalize">beranda</a></li>
+                <li><a href="#" class="hover:text-primary transition capitalize">halaman</a></li>
+                <li><a href="#" class="hover:text-primary transition capitalize">list aplikasi</a></li>
+                <li><a href="#" class="hover:text-primary transition capitalize">hubungi kami</a></li>
+            </ul>
+
+            <a href="" class="bg-amber-700 rounded-xl p-2 px-5 capitalize">
+                <p>dashboard analitik</p>
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button @click="open = !open" class="md:hidden flex flex-col gap-1">
+                <span class="w-6 h-[3px] bg-gray-800"></span>
+                <span class="w-6 h-[3px] bg-gray-800"></span>
+                <span class="w-6 h-[3px] bg-gray-800"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="open" x-transition class="md:hidden bg-white/95 backdrop-blur-lg shadow-lg px-6 py-4 space-y-4">
+            <a href="#" class="block text-gray-700 hover:text-blue-600">Beranda</a>
+            <a href="#" class="block text-gray-700 hover:text-blue-600">Halaman</a>
+            <a href="#" class="block text-gray-700 hover:text-blue-600">List Aplikasi</a>
+            <a href="#" class="block text-gray-700 hover:text-blue-600">Hubungi Kami</a>
+        </div>
+    </nav>
+    <main>
+        <section class="swiper mySwiper w-full h-screen">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide relative">
+                    <img src="assets/img-sliders/slider-start.jpeg" alt="" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/50"></div>
+                    <section class="absolute inset-0 flex flex-col justify-center items-center text-white z-30">
+                        <h1 class="text-4xl w-[30vw] text-center pb-3">Portal Layanan Digital Aceh Provinsi</h1>
+                        <p class="text-lg w-[25vw] text-center">
+                            Satu aplikasi untuk mengakses berbagai layanan publik Aceh — dari pendidikan hingga
+                            administrasi.
+                        </p>
+                    </section>
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="assets/img-sliders/slider-1.jpeg" alt="" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/50"></div>
+                    <section class="absolute inset-0 flex flex-col justify-center items-center text-white z-30">
+                        <h1 class="text-4xl w-[30vw] text-center pb-3">Pendidikan Aceh yang Terintegrasi</h1>
+                        <p class="text-lg w-[25vw] text-center">
+                            Data sekolah, PPDB, dan guru dalam satu platform — lebih mudah dan transparan
+                        </p>
+                    </section>
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="assets/img-sliders/slider-2.jpeg" alt="" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/50"></div>
+                    <section class="absolute inset-0 flex flex-col justify-center items-center text-white z-30">
+                        <h1 class="text-4xl w-[30vw] text-center pb-3">Aspirasi & Pengaduan Masyarakat</h1>
+                        <p class="text-lg w-[25vw] text-center">
+                            Menyampaikan saran, kritik, atau laporan publik jadi lebih cepat dan mudah lewat aplikasi
+                            resmi.
+                        </p>
+                    </section>
+                </div>
+
+                <div class="swiper-slide ">
+                    <img src="assets/img-sliders/slider-3.jpeg" alt="" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/50"></div>
+                    <section class="absolute inset-0 flex flex-col justify-center items-center text-white z-30">
+                        <h1 class="text-4xl w-[30vw] text-center pb-3">sit amet consectetur adipisicing elit</h1>
+                        <p class="text-lg w-[40vw] text-center">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam, doloribus ipsam! Nemo est
+                            obcaecati officiis fugiat molestias aut, cupiditate incidunt vitae quibusdam, dignissimos
+                            perspiciatis facilis facere recusandae reprehenderit blanditiis fugit?
+                        </p>
+                    </section>
+                </div>
+
+            </div>
+
+            <!-- Scrollbar -->
+            <div class="swiper-scrollbar"></div>
+        </section>
+
+
+        <!-- aplikasi integrasi -->
+        <section class="w-full flex flex-col justify-center items-center pt-10 h-screen">
+            <h1 class="text-center text-2xl capitalize bg-primary p-3 rounded-lg text-white">
+                ruangan super apps
+            </h1>
+            <div id="myDiagramDiv" class="w-[90vw] h-[500px]"></div>
+        </section>
+
+        <section class="w-full h-[80vh] bg-primary py-16 flex justify-center">
+            <div class="relative w-[90vw] h-[350px]">
+
+                <!-- Gambar kiri atas -->
+                <img src="assets/layanan-terbaik/asesmen-dinas-pendidikan-aceh.png"
+                    class="absolute top-0 left-0 w-[42vw] h-[27vh] object-cover rounded-md" />
+
+                <!-- Gambar kanan atas -->
+                <img src="assets/layanan-terbaik/siguru.png"
+                    class="absolute top-0 right-0 w-[42vw] h-[27vh] object-cover rounded-md" />
+
+                <!-- Gambar kiri bawah -->
+                <img src="assets/layanan-terbaik/sijempol-aceh.png"
+                    class="absolute bottom-0 left-0 w-[42vw] h-[27vh] object-cover rounded-md" />
+
+                <!-- Gambar kanan bawah -->
+                <img src="assets/layanan-terbaik/rumah-kejuruan.png"
+                    class="absolute bottom-0 right-0 w-[42vw] h-[27vh] object-cover rounded-md" />
+
+                <!-- Box teks blur tengah -->
+                <div
+                    class="absolute inset-y-10 inset-x-80  flex flex-col justify-center items-center text-center bg-white/20 backdrop-blur-md px-10 py-6 rounded-lg">
+                    <h2 class="text-black text-2xl font-bold mb-4">
+                        Dapatkan Hosting Website <span class="shiny-text">Gratis</span> untuk Sekolah Anda!
+                    </h2>
+                    <p class="text-black text-lg leading-relaxed">
+                        SuperApps menyediakan hosting Gratis khusus untuk website sekolah di Aceh. Wujudkan website
+                        sekolah Anda dengan mudah dan tanpa biaya.
+                    </p>
+                    <a href="hosting.html" class="capitalize bg-white p-2 rounded-xl mt-5">daftar sekarang</a>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="layanan w-full h-full relative flex flex-col justify-center items-center my-10 mb-20">
+            <section class="title-layanan flex justify-center items-start max-sm:pb-5 pb-10">
+                <p class="text-2xl capitalize max-sm:text-3xl bg-primary p-3 rounded-lg text-white">
+                    layanan terbaik super apps
+                </p>
+            </section>
+
+            <section class="slider-wrapper relative w-full overflow-hidden">
+                <section id="sliderContainer" class="flex transition-all duration-500 ease-in-out">
+
+                    <a href="https://guru.pusakagtkaceh.id"
+                        class="img-link shrink-0 mx-3 w-[40vw] max-sm:w-[85vw] h-max border-2 border-black p-3 backdrop-blur-sm bg-whie/20">
+                        <section class="w-full h-[40vh] max-sm:h-[30vh] overflow-hidden">
+                            <img src="assets/layanan-terbaik/siguru.png" alt="">
+                        </section>
+                        <section class="flex justify-center w-full">
+                            <section class="icon w-[30vw] h-[30vh] max-sm:w-screen mr-2 max-sm:mr-3">
+                                <img src="" alt=""
+                                    class="w-[20vw] h-[20vh] object-cover  max-sm:w-[18vw] max-sm:h-[13vh]">
+                            </section>
+                            <section class="startflex flex-col justify-items items-center">
+                                <h2 class="capitalize font-bold py-2 max-sm:text-xl text-2xl">Guru Unggul</h2>
+                                <p class="text-justify w-[90%] max-sm:text-sm">platform resmi bernama SiGuru yang
+                                    dirancang untuk meningkatkan kualitas guru di Aceh melalui pendekatan digital dan
+                                    data yang terintegrasi. Melalui layanan ini, guru dapat mengembangkan kompetensi,
+                                    mengikuti pelatihan, serta mendapatkan evaluasi kinerja yang komprehensif.</p>
+                            </section>
+                        </section>
+                    </a>
+
+                    <a href="https://akks.pusakagtkaceh.id"
+                        class="img-link shrink-0 mx-3 w-[40vw] max-sm:w-[85vw] h-max border-2 border-black p-3 backdrop-blur-sm bg-white/20">
+                        <section class="w-full h-[40vh] max-sm:h-[30vh] overflow-hidden">
+                            <img src="assets/layanan-terbaik/asesmen-dinas-pendidikan-aceh.png" alt="">
+                        </section>
+                        <section class="flex justify-center w-full">
+                            <section class="icon w-[30vw] h-[30vh] max-sm:w-screen mr-2 max-sm:mr-3">
+                                <img src="" alt=""
+                                    class="w-[20vw] h-[20vh] object-cover  max-sm:w-[18vw] max-sm:h-[13vh]">
+                            </section>
+                            <section class="infom flex flex-col justify-items items-start">
+                                <h2 class="capitalize font-bold py-2 max-sm:text-xl text-2xl">
+                                    AKKS
+                                </h2>
+                                <p class="text-justify w-[90%] max-sm:text-sm">
+                                    platform manajemen kesertaan fungsional guru (AKKS) di Provinsi Aceh. Portal ini
+                                    menyediakan sistem pengajuan, pemantauan, dan validasi data administratif bagi guru
+                                    yang mengurus kenaikan fungsional, sertifikasi, atau kenaikan pangkat, sekaligus
+                                    memberikan transparansi dan efisiensi dalam proses birokrasi pendidikan Aceh.</p>
+                            </section>
+                        </section>
+                    </a>
+
+                    <a href="https://rka.digitalkode.id"
+                        class="img-link shrink-0 mx-3 w-[40vw] max-sm:w-[85vw] h-max border-2 border-black p-3 backdrop-blur-sm bg-white/20">
+                        <section class="w-full h-[40vh] max-sm:h-[30vh] overflow-hidden">
+                            <img src="assets/layanan-terbaik/rumah-kejuruan.png" alt="">
+                        </section>
+                        <section class="flex justify-center w-full">
+                            <section class="icon w-[30vw] h-[30vh] max-sm:w-screen mr-2 max-sm:mr-3">
+                                <img src="" alt=""
+                                    class="w-[20vw] h-[20vh] object-cover  max-sm:w-[18vw] max-sm:h-[13vh]">
+                            </section>
+                            <section class="infom flex flex-col justify-items items-start">
+                                <h2 class="capitalize font-bold py-2 max-sm:text-xl text-2xl">Rumah Kejuruan</h2>
+                                <p class="text-justify w-[90%] max-sm:text-sm">platform berbasis web yang disiapkan
+                                    untuk mendukung pengelolaan Rencana Kerja dan Anggaran (RKA) secara digital. Melalui
+                                    sistem ini, proses perencanaan, penyusunan, peninjauan, serta pengendalian dokumen
+                                    anggaran dapat dilakukan secara lebih terstruktur, transparan, dan terdokumentasi
+                                    dengan baik.</p>
+                            </section>
+                        </section>
+                    </a>
+
+                    <a
+                        class="img-link shrink-0 mx-3 w-[40vw] max-sm:w-[85vw] h-max border-2 border-black p-3 backdrop-blur-sm bg-white/20">
+                        <section class="w-full h-[40vh] max-sm:h-[30vh] overflow-hidden">
+                            <img src="assets/layanan-terbaik/sijempol-aceh.png" alt="">
+                        </section>
+                        <section class="flex justify-center w-full">
+                            <section class="icon w-[30vw] h-[30vh] max-sm:w-screen mr-2 max-sm:mr-3">
+                                <img src="" alt=""
+                                    class="w-[20vw] h-[20vh] object-cover  max-sm:w-[18vw] max-sm:h-[13vh]">
+                            </section>
+                            <section class="infom flex flex-col justify-items items-start">
+                                <h2 class="capitalize font-bold py-2 max-sm:text-xl text-2xl">Sijempol Aceh</h2>
+                                <p class="text-justify w-[90%] max-sm:text-sm">SiJEMPOL Aceh (Sistem Jejaring Media
+                                    Pembelajaran Online) yang dikembangkan oleh Dinas Pendidikan Aceh. Di sini, guru dan
+                                    siswa Aceh dapat mengakses bahan ajar digital, kelas maya, video pembelajaran, dan
+                                    fasilitas komunikasi untuk pembelajaran fleksibel, kapan saja dan di mana saja.</p>
+                            </section>
+                        </section>
+                    </a>
+                </section>
+            </section>
+
+            <section id="dots"></section>
+
+            <section class="btn relative w-screen max-sm:hidden">
+                <section class="prev-btn cursor-pointer absolute left-[26vw] top-[-45vh] bg-black/30 rounded-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-chevron-left-icon lucide-chevron-left">
+                        <path d="m15 18-6-6 6-6" />
+                    </svg>
+                </section>
+
+                <section class="next-btn cursor-pointer absolute right-[24.8vw] top-[-45vh] bg-black/30 rounded-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-chevron-right-icon lucide-chevron-right">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                </section>
+            </section>
+        </section>
+
+        <!-- fitur unggulan -->
+        <section class="fitur-unggulan h-screen w-full">
+            <section class="flex justify-center items-center pb-10">
+                <h1 class="capitalize bg-primary p-3 rounded-lg text-white">fitur unggulan super apps</h1>
+            </section>
+
+            <section style="--swiper-navigation-color:#fff; --swiper-pagination-color:#fff"
+                class="swiper mySwipers w-full relative bg-black h-[90vh] overflow-hidden"> <!-- Background Parallax -->
+                <div class="parallax-bg absolute inset-0 w-[130%] h-full bg-cover bg-center z-1"
+                    style="background-image:url('assets/img-sliders/slider-start.jpeg');" data-swiper-parallax="-20%">
+                </div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide p-10">
+                        <div class="title text-[41px] font-light text-center" data-swiper-parallax="-300">
+                            <h1>logo</h1>
+                        </div>
+                        <div class="information grid grid-cols-2 place-items-center h-[50vh] text-white">
+                            <div class="subtitle text-[40px] mt-2 w-[20vw] text-center" data-swiper-parallax="-200">
+                                Integrasi Data
+                                Pendidikan
+                            </div>
+                            <div class="text text-lg w-[55%] text-justify " data-swiper-parallax="-100">
+                                <p>
+                                    Mengintegrasikan data dari berbagai aplikasi di lingkungan Dinas Pendidikan Aceh
+                                    sehingga informasi dapat diakses dan dikelola secara terpusat untuk mendukung
+                                    pengambilan keputusan yang akurat.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide p-10">
+                        <div class="title text-[41px] font-light text-center" data-swiper-parallax="-300">
+                            <h1>logo</h1>
+                        </div>
+                        <div class="information grid grid-cols-2 place-items-center h-[50vh] text-white">
+                            <div class="subtitle text-[40px] mt-2 w-[20vw] text-center" data-swiper-parallax="-200">
+                                Layanan Administrasi Cepat
+                            </div>
+                            <div class="text text-lg w-[55%] text-justify " data-swiper-parallax="-100">
+                                <p>
+                                    Memfasilitasi pengajuan, verifikasi, dan monitoring administrasi pendidikan secara
+                                    daring seperti izin, surat tugas, dan lainnya, sehingga layanan lebih efisien dan
+                                    transparan.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide p-10">
+                        <div class="title text-[41px] font-light text-center" data-swiper-parallax="-300">
+                            <h1>logo</h1>
+                        </div>
+                        <div class="information grid grid-cols-2 place-items-center h-[50vh] text-white">
+                            <div class="subtitle text-[40px] mt-2 w-[20vw] text-center" data-swiper-parallax="-200">
+                                Notifikasi & Informasi Terpusat
+                            </div>
+                            <div class="text text-lg w-[55%] text-justify " data-swiper-parallax="-100">
+                                <p>
+                                    Menerima seluruh notifikasi, pengumuman, dan informasi penting terkait aktivitas
+                                    pendidikan secara langsung melalui satu aplikasi terpadu.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide p-10">
+                        <div class="title text-[41px] font-light text-center" data-swiper-parallax="-300">
+                            <h1>logo</h1>
+                        </div>
+                        <div class="information grid grid-cols-2 place-items-center h-[50vh] text-white">
+                            <div class="subtitle text-[40px] mt-2 w-[20vw] text-center" data-swiper-parallax="-200">
+                                SSO (Single Sign-On) - <span class="text-white/40">Coming Soon</span>
+                            </div>
+                            <div class="text text-lg w-[55%] text-justify " data-swiper-parallax="-100">
+                                <p>
+                                    Fitur SSO memungkinkan pengguna login satu kali untuk mengakses seluruh aplikasi
+                                    yang terintegrasi dengan SI SUPERAPPS, sehingga lebih praktis dan aman.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Navigation -->
+                <div class="swiper-button-next z-200"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-arrow-right-icon lucide-arrow-right">
+                        <path d="m12 5 7 7-7 7" />
+                    </svg> </div>
+                <div class="swiper-button-prev z-200"> <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-chevron-left">
+                        <path d="m15 18-6-6 6-6" />
+                    </svg> </div>
+                <div class="swiper-pagination"></div>
+            </section>
+        </section>
+
+        <section class="w-full flex flex-col items-center py-16">
+            <!-- Judul -->
+            <h1 class="text-center text-2xl md:text-3xl font-semibold mb-10 leading-relaxed">
+                Pertanyaan Seputar Integrasi &<br />
+                Interoperabilitas<br />
+                <span class="font-bold">Kami Siap Menjawab!</span>
+            </h1>
+
+            <div class="w-full max-w-[60vw] space-y-4">
+
+                <!-- FAQ Item -->
+                <div class="faq-item">
+                    <button class="faq-btn w-full bg-gray-200 rounded-xl px-4 py-3 flex justify-between items-center">
+                        <span class="text-gray-700 font-medium">
+                            Apa itu integrasi dan interoperabilitas aplikasi di Dinas Pendidikan?
+                        </span>
+                        <span class="icon text-2xl font-bold">+</span>
+                    </button>
+
+                    <div
+                        class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-100 rounded-lg">
+                        <div class="p-4 text-gray-700">
+                            Integrasi aplikasi di lingkungan Dinas Pendidikan Aceh berarti setiap aplikasi yang
+                            digunakan dapat saling terhubung dan bertukar data secara otomatis. Interoperabilitas
+                            memastikan berbagai aplikasi, meskipun berbeda platform atau teknologi, tetap dapat
+                            berkomunikasi dan bekerja sama secara efektif.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item -->
+                <div class="faq-item">
+                    <button class="faq-btn w-full bg-gray-200 rounded-xl px-4 py-3 flex justify-between items-center">
+                        <span class="text-gray-700 font-medium">
+                            Bagaimana data antar aplikasi dapat terintegrasi?
+                        </span>
+                        <span class="icon text-2xl font-bold">+</span>
+                    </button>
+
+                    <div
+                        class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-100 rounded-lg">
+                        <div class="p-4 text-gray-700">
+                            Semua data dari aplikasi yang berbeda dikumpulkan dan disimpan terpusat di Data Warehouse.
+                            Dengan proses integrasi ini, setiap aplikasi akan saling bertukar data secara otomatis
+                            sehingga tidak terjadi duplikasi dan data menjadi lebih akurat.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item -->
+                <div class="faq-item">
+                    <button class="faq-btn w-full bg-gray-200 rounded-xl px-4 py-3 flex justify-between items-center">
+                        <span class="text-gray-700 font-medium">
+                            Apa manfaat utama integrasi aplikasi dengan Data Warehouse & API Gateway?
+                        </span>
+                        <span class="icon text-2xl font-bold">+</span>
+                    </button>
+
+                    <div
+                        class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-100 rounded-lg">
+                        <div class="p-4 text-gray-700">
+                            Integrasi dengan Data Warehouse dan API Gateway meningkatkan efisiensi, akurasi, serta
+                            ketersediaan data yang real-time untuk pengambilan keputusan. Selain itu, mempermudah
+                            pengembangan aplikasi baru dengan memanfaatkan API yang sudah tersedia secara publik.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="w-full bg-primary text-white py-12 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+
+            <!-- Logo & Deskripsi -->
+            <div>
+                <h2 class="text-xl font-semibold mb-4">Super Apps Aceh</h2>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    Platform layanan digital terpadu yang mendukung berbagai kebutuhan masyarakat Aceh secara cepat,
+                    aman dan terintegrasi.
+                </p>
+            </div>
+
+            <!-- Menu Navigasi -->
+            <div>
+                <h3 class="text-lg font-semibold mb-3">Navigasi</h3>
+                <ul class="space-y-2 text-gray-300 text-sm">
+                    <li><a href="#" class="hover:text-white transition">Beranda</a></li>
+                    <li><a href="#" class="hover:text-white transition">Layanan</a></li>
+                    <li><a href="#" class="hover:text-white transition">Tentang</a></li>
+                    <li><a href="#" class="hover:text-white transition">Kontak</a></li>
+                </ul>
+            </div>
+
+            <!-- Informasi Kontak -->
+            <div>
+                <h3 class="text-lg font-semibold mb-3">Kontak</h3>
+                <ul class="space-y-2 text-gray-300 text-sm">
+                    <li>Dinas Komunikasi, Informatika dan Persandian</li>
+                    <li>Provinsi Aceh</li>
+                    <li>Email: <a href="#" class="hover:text-white">info@acehprov.go.id</a></li>
+                    <li>Telp: (0651) 123456</li>
+                </ul>
+            </div>
+
+            <!-- Sosial Media -->
+            <div>
+                <h3 class="text-lg font-semibold mb-3">Ikuti Kami</h3>
+                <div class="flex items-center gap-4 text-white">
+                    <a href="#" class="hover:text-gray-300 text-2xl">🌐</a>
+                    <a href="#" class="hover:text-gray-300 text-2xl">📘</a>
+                    <a href="#" class="hover:text-gray-300 text-2xl">🏆</a>
+                    <a href="#" class="hover:text-gray-300 text-2xl">📸</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Garis Pembatas -->
+        <div class="max-w-7xl mx-auto border-t border-gray-700 mt-10 pt-6 text-center">
+            <p class="text-gray-400 text-sm">
+                © 2025 Pemerintah Aceh. Semua hak dilindungi.
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="main.js"></script>
+    <script type="module">
+        import { initDiagram } from "./diagram.js";
+        initDiagram();
+    </script>
+    <script>
+        const items = document.querySelectorAll('.faq-item');
+
+        items.forEach(item => {
+            const btn = item.querySelector('.faq-btn');
+            const content = item.querySelector('.faq-content');
+            const icon = item.querySelector('.icon');
+
+            btn.addEventListener('click', () => {
+
+                // Tutup semua kecuali yang diklik
+                items.forEach(i => {
+                    if (i !== item) {
+                        const c = i.querySelector('.faq-content');
+                        const ic = i.querySelector('.icon');
+                        c.style.maxHeight = null;
+                        ic.textContent = "+";
+                    }
+                });
+
+                // Toggle item yang diklik
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                    icon.textContent = "+";
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    icon.textContent = "−";
+                }
+            });
+        });
+    </script>
+
+    <script type="module">
+        const swiper = new Swiper(".mySwiper", {
+
+            autoplay: {
+                delay: 1500, // 1,5 detik
+                disableOnInteraction: false, // tetap jalan meski user interaksi
+            },
+            loop: true, // biar bisa loop terus
+            speed: 1000, // kecepatan transisi
+            scrollbar: {
+                el: ".swiper-scrollbar",
+                hide: true,
+                draggable: true,
+                snapOnRelease: true
+            },
+        });
+
+        var swipers = new Swiper(".mySwipers", {
+            speed: 600,
+            parallax: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
+
+</body>
+
+</html>
