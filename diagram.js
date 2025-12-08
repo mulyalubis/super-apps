@@ -17,7 +17,7 @@ export function initDiagram() {
         { id: "CENTER", label: "Rumoh Pendidikan Provinsi Aceh", desc: "Pusat Integrasi Digital", px: 0.50, py: 0.50, img: "assets/img-sliders/slider-start.jpeg", link: "ruang-super-apps/", color: "#BF2311", icon: "rocket", isCenter: true },
         { id: "SMK", label: "Bidang SMK", desc: "Pendidikan Kejuruan", px: 0.90, py: 0.30, img: "assets/layanan-terbaik/rumah-kejuruan.png", link: "ruang-super-apps/", color: "#F59E0B", icon: "wrench" },
         { id: "UPTD", label: "UPTD Tekkomdik", desc: "Teknologi & Komunikasi", px: 0.90, py: 0.70, img: "assets/layanan-terbaik/sijempol-aceh.png", link: "ruang-super-apps/", color: "#8B5CF6", icon: "laptop" },
-        { id: "ELAYANAN", label: "E-Layanan", desc: "Sistem Informasi Layanan Dinas Pendidikan Aceh", px: 0.50, py: 0.95, img: "assets/layanan-terbaik/siguru.png", link: "ruang-super-apps/", color: "#EC4899", icon: "service" }
+        { id: "ELAYANAN", label: "E-Layanan", desc: "Sistem Informasi Layanan Dinas Pendidikan Aceh", px: 0.50, py: 0.95, img: "assets/layanan-terbaik/siguru.png", link: "https://webportal.disdikaceh.id", color: "#EC4899", icon: "service" }
     ];
     
     const links = [
