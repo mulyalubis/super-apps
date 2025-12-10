@@ -5,7 +5,7 @@ export function initDiagram() {
     const icons = {
         graduation: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>',
         users: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
-        rocket: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>',
+        rocket: '<img src="assets/logo-app/rumoeh-pendidikan-aceh(tanpa-bg).png" alt="" class="rounded-xs w-[3.5vw]" >',
         wrench: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',
         laptop: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/></svg>',
         service: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>'
@@ -19,7 +19,7 @@ export function initDiagram() {
         { id: "UPTD", label: "UPTD Tekkomdik", desc: "Teknologi & Komunikasi", px: 0.90, py: 0.70, img: "assets/layanan-terbaik/sijempol-aceh.png", link: "ruang-super-apps/uptd-tekkomdik.html", color: "#8B5CF6", icon: "laptop" },
         { id: "ELAYANAN", label: "E-Layanan", desc: "Sistem Informasi Layanan Dinas Pendidikan Aceh", px: 0.50, py: 0.95, img: "assets/layanan-terbaik/siguru.png", link: "https://webportal.disdikaceh.id", color: "#EC4899", icon: "service" }
     ];
-    
+
     const links = [
         { source: "SMA", target: "CENTER" },
         { source: "GTK", target: "CENTER" },
@@ -30,7 +30,7 @@ export function initDiagram() {
 
     const container = document.getElementById("myDiagramDiv");
     if (!container) return;
-    
+
     const width = container.offsetWidth || window.innerWidth * 0.9;
     const height = 600;
 
@@ -55,18 +55,18 @@ export function initDiagram() {
         .attr("y", "-50%")
         .attr("width", "200%")
         .attr("height", "200%");
-    
+
     glowFilter.append("feGaussianBlur")
         .attr("stdDeviation", "3")
         .attr("result", "coloredBlur");
-    
+
     const feMerge = glowFilter.append("feMerge");
     feMerge.append("feMergeNode").attr("in", "coloredBlur");
     feMerge.append("feMergeNode").attr("in", "SourceGraphic");
 
     const bgGroup = svg.append("g").attr("class", "bg-decorations");
     const centerNode = nodes.find(n => n.id === "CENTER");
-    
+
     bgGroup.append("circle")
         .attr("cx", centerNode.x)
         .attr("cy", centerNode.y)
@@ -171,31 +171,31 @@ export function initDiagram() {
             cardHtml = '<div class="card-wrapper" style="width: ' + cardWidth + 'px; height: ' + cardHeight + 'px;">' +
                 '<a href="' + node.link + '" class="diagram-card center-card" style="--card-color: ' + node.color + '">' +
                 '<div class="card-inner">' +
-                    '<div class="center-glow"></div>' +
-                    '<div class="card-icon-large">' + iconSvg + '</div>' +
-                    '<h3 class="card-title-large">' + node.label + '</h3>' +
-                    '<p class="card-desc">' + node.desc + '</p>' +
-                    '<div class="pulse-ring"></div>' +
-                    '<div class="pulse-ring delay-1"></div>' +
+                '<div class="center-glow"></div>' +
+                '<div class="card-icon-large">' + iconSvg + '</div>' +
+                '<h3 class="card-title-large">' + node.label + '</h3>' +
+                '<p class="card-desc">' + node.desc + '</p>' +
+                '<div class="pulse-ring"></div>' +
+                '<div class="pulse-ring delay-1"></div>' +
                 '</div>' +
-            '</a></div>';
+                '</a></div>';
         } else {
             cardHtml = '<div class="card-wrapper" style="width: ' + cardWidth + 'px; height: ' + cardHeight + 'px;">' +
                 '<a href="' + node.link + '" class="diagram-card side-card" style="--card-color: ' + node.color + '">' +
                 '<div class="card-inner">' +
-                    '<div class="card-header" style="background: linear-gradient(135deg, ' + node.color + '20, ' + node.color + '40)">' +
-                        '<div class="card-icon">' + iconSvg + '</div>' +
-                        '<div class="status-indicator" style="background: ' + node.color + '"></div>' +
-                    '</div>' +
-                    '<div class="card-body">' +
-                        '<h4 class="card-title">' + node.label + '</h4>' +
-                        '<p class="card-subtitle">' + node.desc + '</p>' +
-                    '</div>' +
-                    '<div class="card-arrow">' +
-                        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>' +
-                    '</div>' +
+                '<div class="card-header" style="background: linear-gradient(135deg, ' + node.color + '20, ' + node.color + '40)">' +
+                '<div class="card-icon">' + iconSvg + '</div>' +
+                '<div class="status-indicator" style="background: ' + node.color + '"></div>' +
                 '</div>' +
-            '</a></div>';
+                '<div class="card-body">' +
+                '<h4 class="card-title">' + node.label + '</h4>' +
+                '<p class="card-subtitle">' + node.desc + '</p>' +
+                '</div>' +
+                '<div class="card-arrow">' +
+                '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>' +
+                '</div>' +
+                '</div>' +
+                '</a></div>';
         }
 
         nodesGroup.append("foreignObject")
@@ -300,13 +300,13 @@ export function initDiagram() {
             .card-icon-large {
                 margin-bottom: 8px;
                 z-index: 1;
-                animation: floatIcon 3s ease-in-out infinite;
+                animation: floatIcon 2.5s linear infinite;
                 color: white;
             }
 
             @keyframes floatIcon {
-                0%, 100% { transform: translateY(0); }
-                50% { transform: translateY(-8px); }
+                0%, 100% { transform: translateY(6px); }
+                50% { transform: translateY(-2px); }
             }
 
             .card-title-large {
